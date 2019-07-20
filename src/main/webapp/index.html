@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ToDoList</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2 align="center" id="main">Items List</h2>
+    <br>
+    <table class="table table-bordered" id="table">
+        <tr>
+            <th>Item ID</th>
+            <th>Description</th>
+            <th>Created</th>
+            <th>Status</th>
+        </tr>
+    </table>
+    <br>
+    <form>
+        <label>Show all Items</label>
+        <input type="checkbox" id="check" onclick="loadItems()">
+    </form>
+    <br>
+    <form action="/todo" method="post">
+        <label for="desc">Enter description for the new Task:</label>
+        <input type="text" name="description" id="desc">
+        <button type="submit" onclick="return validate()">Submit</button>
+    </form>
+    <br>
+</div>
+</body>
+</html>
