@@ -1,11 +1,12 @@
-package ru.job4j.carwarehouse.models.annotations;
+package ru.job4j.carwarehouse.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * @author Khan Vyacheslav (mailto: beckkhan@mail.ru)
- * @version 1.0
- * @since 22.07.2019
+ * @version 2.0
+ * @since 25.07.2019
  */
 
 @Entity
@@ -41,6 +42,24 @@ public class Bodytype {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Bodytype bodytype = (Bodytype) o;
+        return id == bodytype.id
+                && Objects.equals(name, bodytype.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override

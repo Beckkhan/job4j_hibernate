@@ -1,17 +1,19 @@
 package ru.job4j.carwarehouse.service;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  * @author Khan Vyacheslav (mailto: beckkhan@mail.ru)
- * @version 1.0
- * @since 22.07.2019
+ * @version 2.0
+ * @since 27.07.2019
  */
 public class CarServiceAnnotationsTest {
 
     private CarServiceAnnotations carService = CarServiceAnnotations.getInstance();
 
+    @Ignore
     @Test
     public void whenAddThenDeleteCar() {
         int newCarId = carService.addNewCarWithoutParts("BMW");
@@ -19,6 +21,7 @@ public class CarServiceAnnotationsTest {
         assertTrue(newCarId == deletedCarId);
     }
 
+    @Ignore
     @Test
     public void whenAddThenDeleteBodytype() {
         int newBodytypeId = carService.addNewBodytype("Shooting Brake");
@@ -26,6 +29,7 @@ public class CarServiceAnnotationsTest {
         assertTrue(newBodytypeId == deletedBodytypeId);
     }
 
+    @Ignore
     @Test
     public void whenAddThenDeleteEngine() {
         int newEngineId = carService.addNewEngine("Hybrid");
@@ -33,6 +37,7 @@ public class CarServiceAnnotationsTest {
         assertTrue(newEngineId == deletedEngineId);
     }
 
+    @Ignore
     @Test
     public void whenAddThenDeleteTransmission() {
         int newTransmissionId = carService.addNewTransmission("Robotronic");
@@ -40,6 +45,7 @@ public class CarServiceAnnotationsTest {
         assertTrue(newTransmissionId == deletedTransmissionId);
     }
 
+    @Ignore
     @Test
     public void whenUpdateParts() {
         int newBodytypeId = carService.addNewBodytype("Shooting Brake");

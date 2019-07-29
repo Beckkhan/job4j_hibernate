@@ -21,7 +21,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <db.url>jdbc:postgresql://localhost/hibernate</db.url>
+                <db.url>jdbc:postgresql://localhost/carwarehouse</db.url>
                 <db.username>postgres</db.username>
                 <db.password></db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
@@ -30,7 +30,7 @@
         <profile>
             <id>test</id>
             <properties>
-                <db.url>jdbc:postgresql://localhost/hibernate</db.url>
+                <db.url>jdbc:postgresql://localhost/carwarehouse</db.url>
                 <db.username>postgres</db.username>
                 <db.password>password</db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
@@ -39,7 +39,7 @@
         <profile>
             <id>production</id>
             <properties>
-                <db.url>jdbc:postgresql://localhost/hibernate</db.url>
+                <db.url>jdbc:postgresql://localhost/carwarehouse</db.url>
                 <db.username>postgres</db.username>
                 <db.password>password</db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
@@ -80,11 +80,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>2.4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/taglibs/standard -->
         <dependency>
@@ -136,12 +131,11 @@
             <artifactId>guava</artifactId>
             <version>18.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>2.23.4</version>
-            <scope>test</scope>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.4</version>
         </dependency>
     </dependencies>
 
@@ -216,7 +210,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>

@@ -5,14 +5,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
-import ru.job4j.carwarehouse.models.annotations.*;
+import ru.job4j.carwarehouse.entity.Bodytype;
+import ru.job4j.carwarehouse.entity.Car;
+import ru.job4j.carwarehouse.entity.Engine;
+import ru.job4j.carwarehouse.entity.Transmission;
+
 import java.util.List;
 import java.util.function.Function;
 
 /**
  * @author Khan Vyacheslav (mailto: beckkhan@mail.ru)
- * @version 1.0
- * @since 22.07.2019
+ * @version 2.0
+ * @since 25.07.2019
  */
 public class CarServiceAnnotations {
 

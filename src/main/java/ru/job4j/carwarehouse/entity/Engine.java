@@ -1,6 +1,7 @@
-package ru.job4j.carwarehouse.models.annotations;
+package ru.job4j.carwarehouse.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * @author Khan Vyacheslav (mailto: beckkhan@mail.ru)
@@ -41,6 +42,24 @@ public class Engine {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Engine engine = (Engine) o;
+        return id == engine.id
+                && Objects.equals(name, engine.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override

@@ -1,11 +1,12 @@
-package ru.job4j.carwarehouse.models.annotations;
+package ru.job4j.carwarehouse.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * @author Khan Vyacheslav (mailto: beckkhan@mail.ru)
- * @version 1.0
- * @since 22.07.2019
+ * @version 2.0
+ * @since 25.07.2019
  */
 
 @Entity
@@ -41,6 +42,24 @@ public class Transmission {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Transmission that = (Transmission) o;
+        return id == that.id
+                && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override
