@@ -1,12 +1,13 @@
 package ru.job4j.carwarehouse.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.*;
 
 /**
  * @author Khan Vyacheslav (mailto: beckkhan@mail.ru)
- * @version 2.0
- * @since 25.07.2019
+ * @version 3.0
+ * @since 30.07.2019
  */
 
 @Entity
@@ -46,6 +47,9 @@ public class Car {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(name = "created")
+    private Date created;
+
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "car",
             cascade = {CascadeType.ALL})
@@ -56,6 +60,14 @@ public class Car {
 
     public Car(String brand) {
         this.brand = brand;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
     public int getId() {

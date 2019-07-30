@@ -11,8 +11,8 @@ import java.util.*;
 
 /**
  * @author Khan Vyacheslav (mailto: beckkhan@mail.ru)
- * @version 1.0
- * @since 25.07.2019
+ * @version 2.0
+ * @since 30.07.2019
  */
 public class ContentFilterServlet extends HttpServlet {
 
@@ -30,16 +30,20 @@ public class ContentFilterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String soldStatus = req.getParameter("filterSold");
         String withPicture = req.getParameter("filterImage");
+        String dateTime = req.getParameter("filterDate");
         String name = req.getParameter("filterName");
-
+        Date date = carStore.getById(1).getCreated();
+        if (dateTime != null) {
+            date = new Date();
+        }
         if (soldStatus != null && !name.equals("")) {
-            list = carStore.filterCarsBySoldAndName(false, name);
+            list = carStore.filterCarsBySoldAndName(false, name, date);
         } else if (soldStatus != null) {
-            list = carStore.filterCarsBySold(false);
+            list = carStore.filterCarsBySold(false, date);
         } else if (!name.equals("")) {
-            list = carStore.filterCarsByName(name);
+            list = carStore.filterCarsByName(name, date);
         } else {
-            list = carStore.getAll();
+            list = carStore.getAllWithData(date);
         }
 
         for (Car car : list) {

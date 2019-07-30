@@ -36,7 +36,8 @@ create table cars (
 		price numeric,
 		sold boolean,
 		location varchar(200),
-		user_id integer references users(id)
+		user_id integer references users(id),
+		created date default now()
 );
 
 alter table pictures add picture bytea;

@@ -30,6 +30,7 @@
         <tr>
             <td>
                 <ul>
+                    <li>Creation Date: ${car.created}</li>
                     <li>Car Id: ${car.id}</li>
                     <li>Car name: ${car.brand}</li>
                     <li>Body: ${car.bodytype.name}</li>
@@ -84,16 +85,20 @@
     </c:forEach>
 </table>
 <form method="get" action="${pageContext.servletContext.contextPath}/filter">
-    <label>With Images</label>
+    <br>
+    <label>Show for the last day:</label>
+    <input type="checkbox" name="dateTime" value="date">
+    <br>
+    <label>With Images:</label>
     <input type="checkbox" name="filterImage" value="image">
     <br>
-    <label>Only cars fo sale: </label>
+    <label>Only cars fo sale:</label>
     <input type="checkbox" name="filterSold" value="sold">
     <br>
-    <label>With Car Name</label>
+    <label>With Car Name:</label>
     <input type="text" name="filterName">
     <br>
-    <input type="submit" value="Filter" >
+    <input type="submit" value="Filter">
 </form>
 <br>
 <form method="get" action="${pageContext.servletContext.contextPath}/addCar">

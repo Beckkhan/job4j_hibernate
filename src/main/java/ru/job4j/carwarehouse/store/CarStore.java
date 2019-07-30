@@ -3,13 +3,14 @@ package ru.job4j.carwarehouse.store;
 import ru.job4j.carwarehouse.entity.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import static ru.job4j.carwarehouse.store.Wrapper.tx;
 
 /**
  * @author Khan Vyacheslav (mailto: beckkhan@mail.ru)
- * @version 1.0
- * @since 25.07.2019
+ * @version 2.0
+ * @since 30.07.2019
  */
 public class CarStore implements Store<Car> {
 
@@ -54,7 +55,12 @@ public class CarStore implements Store<Car> {
 
     @Override
     public List<Car> getAll() {
-        return tx(session -> session.createQuery("from Car ", Car.class).list());
+        return tx(session -> session.createQuery("from Car", Car.class).list());
+    }
+
+    public List<Car> getAllWithData(Date date) {
+        return tx(session -> session.createQuery("from Car C where C.created >= : date", Car.class)
+                .setParameter("date", date).list());
     }
 
     @Override
@@ -112,23 +118,24 @@ public class CarStore implements Store<Car> {
         });
     }
 
-    public List<Car> filterCarsBySold(boolean sold) {
-        return tx(session -> session.createQuery("select C from Car C where C.sold = : sold", Car.class)
-                .setParameter("sold", sold).getResultList());
+    public List<Car> filterCarsBySold(boolean sold, Date date) {
+        return tx(session -> session.createQuery("select C from Car C where C.sold = : sold and C.created >= : date", Car.class)
+                .setParameter("sold", sold).setParameter("date", date).getResultList());
     }
 
-    public List<Car> filterCarsBySoldAndName(boolean sold, String name) {
+    public List<Car> filterCarsBySoldAndName(boolean sold, String name, Date date) {
         final String parameter = name.toLowerCase();
         return tx(session ->
-                session.createQuery("select C from Car C where C.sold = : sold and lower(C.name) = : name", Car.class)
+                session.createQuery("select C from Car C where C.sold = : sold and lower(C.brand) = : name and C.created >= : date", Car.class)
                         .setParameter("sold", sold)
                         .setParameter("name", parameter)
+                        .setParameter("date", date)
                         .getResultList());
     }
 
-    public List<Car> filterCarsByName(String name) {
+    public List<Car> filterCarsByName(String name, Date date) {
         //final String parameter = name.toLowerCase();
-        List<Car> allList = this.getAll();
+        List<Car> allList = this.getAllWithData(date);
         /*List<Car> allList = tx(session -> session.createQuery("select C from Car C where lower(C.brand) = : name", Car.class)
                 .setParameter("name", parameter).getResultList());*/
         List<Car> result = new ArrayList<>();
