@@ -1,0 +1,19 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:hsqldb:mem:carwarehouse;sql.enforce_size=false</property>
+        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"></property>
+        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <mapping class="ru.job4j.carwarehouse.entity.Car"/>
+        <mapping class="ru.job4j.carwarehouse.entity.Bodytype"/>
+        <mapping class="ru.job4j.carwarehouse.entity.Engine"/>
+        <mapping class="ru.job4j.carwarehouse.entity.Transmission"/>
+        <mapping class="ru.job4j.carwarehouse.entity.User"/>
+        <mapping class="ru.job4j.carwarehouse.entity.Picture"/>
+
+    </session-factory>
+</hibernate-configuration>
